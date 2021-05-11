@@ -23,7 +23,7 @@ Use Git to install a conda environment for pysoda
 Once Log(v) 3LPF is installed....
 
 
-## Citing SoDa
+## Citing Log(V) 3LPF
 
 If you find Log(v) 3LPF useful in your work, we kindly request that you cite the following [publication]():
 ```
