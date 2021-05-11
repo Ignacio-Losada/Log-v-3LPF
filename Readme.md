@@ -8,7 +8,7 @@ Log(v)  3LPF is  a  linear power  flow  solver  for  unbalanced  three-phase  di
 
 
 ## Installation (Python)
-Use Git to install pysoda in your current python environment
+Use Git to install Log(v) 3LPF in your current python environment
 ```bash
 
 ```
