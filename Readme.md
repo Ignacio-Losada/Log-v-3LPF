@@ -1,8 +1,8 @@
-# Log(v) 3LPF:  A Linear Power Flow Formulationfor Unbalanced Three-Phase Distribution Systems
+# Log(v) 3LPF:  A Linear Power Flow Formulation for Unbalanced Three-Phase Distribution Systems
 
 <img src="https://github.com/Ignacio-Losada/SoDa/blob/master/sodalogo.png" align="right" width="200" alt="SoDa logo">
 
-SoDa is  an   irradiance-based  synthetic  Solar  Data  generation  tool  to  generate  realistic sub-minute  solar  photovoltaic  (PV)  power  time  series. Soda  emulates  the  weather  pattern  for  a  certain  geographical location using 30-min averaged irradiance and cloud type information from the National Solar Radiation Database (NSRDB)
+Log(v)  3LPF is  a  linear power  flow  solver  for  unbalanced  three-phase  distribution  systems.  Log(v)  3LPF  uses  a  logarithmic  transform  of  the  voltage phasor  to  linearize  the  AC  power  flow  equations  around  the balanced   case.   It includes   the   modeling   of   ZIP   loads,transformers, capacitor banks, switches and their corresponding controls.  We  use  the  Sherman-Morrison-Woodbury  identity  for  an efficient computation of the inverse of a rank-k corrected system admittance matrix matrix, Ybus. In general, the computation of the inverse using Sherman-Morrison Woodbury is more efficient than traditional LU decomposition  methods  in  terms  of  FLOPS.  This tool has been validated against OpenDSS on different  network  sizes,  ranging  from  tens to  thousands  of  nodes.
 
 
 
