@@ -1,4 +1,4 @@
-# PySoDa
+# Log(v) 3LPF:  A Linear Power Flow Formulationfor Unbalanced Three-Phase Distribution Systems
 
 <img src="https://github.com/Ignacio-Losada/SoDa/blob/master/sodalogo.png" align="right" width="200" alt="SoDa logo">
 
