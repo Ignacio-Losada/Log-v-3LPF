@@ -1,0 +1,22 @@
+clear
+
+Set DefaultBaseFrequency=50  ! for European system
+
+New circuit.LVTest
+Edit Vsource.Source BasekV=11 pu=1.05  R1=0 X1=0.0001 R0=0 X0=0.0001
+Redirect LineCode.txt
+Redirect LoadShapes.txt
+batchedit loadshape..* useactual=no
+Redirect Lines.txt
+Redirect Transformers.txt
+Redirect Loads.txt
+Redirect Monitors.txt
+
+
+New energymeter.m1 LINE.LINE1 1
+
+Set voltagebases=[11  .416]
+Calcvoltagebases
+
+buscoords buscoords.txt
+solve
