@@ -1,6 +1,7 @@
-scipy>=1.4.1
-nrel-pysam>=2.1.4
 pandas
 numpy
-requests>=2.22.0
 matplotlib
+seaborn
+opendssdirect-py == 0.5.0
+networkx
+scipy
