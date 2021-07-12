@@ -20,7 +20,7 @@ pip3 install -r requirements.txt
 Use Git to install a conda environment for Log(v) 3LPF
 ```bash
 git clone https://github.com/Ignacio-Losada/Log-v-3LPF
-cd SoDa
+cd .\Log-v-3LPF\
 conda env create -f environment.yml
 
 ```
