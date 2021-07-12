@@ -1,12 +1,13 @@
 name: pysoda
 
 dependencies:
-    - python==3.7
+    - python==3.8.3
     - pip
     - pip:
-        - scipy>=1.4.1
-        - nrel-pysam==2.1.4
         - pandas
         - numpy
-        - requests>=2.22.0
         - matplotlib
+        - seaborn
+        - opendssdirect-py == 0.5.0
+        - networkx
+        - scipy
