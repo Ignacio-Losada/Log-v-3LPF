@@ -17,13 +17,18 @@ pip3 install -r requirements.txt
 ```
 
 ## Installation with Git (Conda)
-Use Git to install a conda environment for pysoda
+Use Git to install a conda environment for Log(v) 3LPF
 ```bash
+git clone https://github.com/Ignacio-Losada/Log-v-3LPF
+cd SoDa
+conda env create -f environment.yml
 
 ```
 
 ## Basic Usage
-Once Log(v) 3LPF is installed....
+Once Log(v) 3LPF is installed, a power flow that uses any .dss test case within openDSS or any network with a similar format can be run as follows
+
+
 
 
 ## Citing Log(V) 3LPF
