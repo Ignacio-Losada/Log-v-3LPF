@@ -10,6 +10,9 @@ Log(v)  3LPF is  a  linear power  flow  solver  for  unbalanced  three-phase  di
 ## Installation (Python)
 Use Git to install Log(v) 3LPF in your current python environment
 ```bash
+git clone https://github.com/Ignacio-Losada/Log-v-3LPF
+cd .\Log-v-3LPF\
+pip3 install -r requirements.txt
 
 ```
 
@@ -27,7 +30,12 @@ Once Log(v) 3LPF is installed....
 
 If you find Log(v) 3LPF useful in your work, we kindly request that you cite the following [publication]():
 ```
-
+@article{carreno2021log,
+  title={Log (v) 3LPF: A Linear Power Flow Formulation for Unbalanced Three-Phase Distribution Systems},
+  author={Carre{\~n}o, Ignacio Losada and Saha, Shammya and Scaglione, Anna and Arnold, Daniel and Sy-Toan, Ngo and Roberts, Ciaran},
+  year={2021},
+  publisher={TechRxiv}
+}
 ```
 
 
