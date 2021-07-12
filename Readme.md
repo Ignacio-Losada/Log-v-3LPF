@@ -1,4 +1,4 @@
-# Log(v) 3LPF:  A Linear Power Flow Formulation for Unbalanced Three-Phase Distribution Systems
+# Log(v) 3LPF
 
 <img src="https://github.com/Ignacio-Losada/Log-v-3LPF/blob/main/log(v)3LPF.png" align="right" width="600" alt="Log(v) 3LPF logo">
 
