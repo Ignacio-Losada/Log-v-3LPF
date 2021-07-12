@@ -9,14 +9,14 @@ def _read_requirements_file():
         return [line.strip() for line in f]
 
 setup(
-    name='pysoda',
+    name='logv3lpf',
     version="0.1.0",
     packages=find_packages(),
     license='MIT',
-    description='SoDa is an irradiance-based synthetic Solar Data generation tool to generate realistic sub-minute solar photovoltaic (PV) power time series',
+    description='Log(v) 3LPF: A linear power flow solver for three-phase unbalanced distribution systems',
     install_requires=_read_requirements_file(),
-    url='https://github.com/Ignacio-Losada/SoDa',
+    url='https://github.com/Ignacio-Losada/Log-v-3LPF',
     author='Ignacio Losada Carreno',
     author_email='ilosadac@asu.edu',
-    scripts=['soda/__init__.py',]
+    scripts=['logv3lpf/__init__.py',]
 )
