@@ -1,4 +1,4 @@
-name: pysoda
+name: logv3lpf
 
 dependencies:
     - python==3.8.3
