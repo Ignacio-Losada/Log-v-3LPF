@@ -29,10 +29,6 @@ conda env create -f environment.yml
 Once Log(v) 3LPF is installed, a power flow that uses any .dss test case within openDSS or any network with a similar format can be run as follows
 ```python
 import logv3lpf
-import matplotlib.pyplot as plt
-from logv3lpf.utils import create_df
-import numpy as np
-import seaborn as sns
 
 dss_file = r"\test-cases\IEEE13\IEEE13Nodeckt.dss"
 file = "Compile {:}{:}".format(logv3lpf.__path__[0],dss_file) # File path
