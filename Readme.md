@@ -34,10 +34,10 @@ from logv3lpf.utils import create_df
 import numpy as np
 import seaborn as sns
 
-dss_file = r"\test-cases\IEEE123\IEEE123Master.dss"
+dss_file = r"\test-cases\IEEE13\IEEE13Nodeckt.dss"
 file = "Compile {:}{:}".format(logv3lpf.__path__[0],dss_file) # File path
-source_bus_name = "150"
-reference_vm = 1.0 # Reference voltage magnitude in p.u.
+source_bus_name = "sourcebus"
+reference_vm = 1.05 # Reference voltage magnitude in p.u.
 reference_va = 0 # Reference voltage angle in degrees
 case = logv3lpf.case(file,source_bus_name,reference_vm,reference_va) # Parse .dss file
 
@@ -60,8 +60,8 @@ dict_keys(['vm', 'va'])
 ```
 For example,
 ```python
->>> print(case.results["logv3lpf"]["vm"]["250"])
-[0.96062615 1.00966848 0.96748826]
+>>> print(case.results["logv3lpf"]["vm"]["675"])
+[0.97637709 1.06585679 0.98173319]
 ```
 Also, the package includes a plotting tool
 ```python
