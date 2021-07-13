@@ -72,6 +72,9 @@ variable = "vm"
 plot_results(case,base_algorithm,test_algorithm,variable)
 ```
 
+that returns a figure
+<img src="https://github.com/Ignacio-Losada/Log-v-3LPF/results.png" align="center" width="500" alt="Log(v) 3LPF results">
+
 
 ## Citing Log(V) 3LPF
 
