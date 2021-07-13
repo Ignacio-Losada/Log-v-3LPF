@@ -27,8 +27,50 @@ conda env create -f environment.yml
 
 ## Basic Usage
 Once Log(v) 3LPF is installed, a power flow that uses any .dss test case within openDSS or any network with a similar format can be run as follows
+```python
+import logv3lpf
+import matplotlib.pyplot as plt
+from logv3lpf.utils import create_df
+import numpy as np
+import seaborn as sns
 
+dss_file = r"\test-cases\IEEE123\IEEE123Master.dss"
+file = "Compile {:}{:}".format(logv3lpf.__path__[0],dss_file) # File path
+source_bus_name = "150"
+reference_vm = 1.0 # Reference voltage magnitude in p.u.
+reference_va = 0 # Reference voltage angle in degrees
+case = logv3lpf.case(file,source_bus_name,reference_vm,reference_va) # Parse .dss file
 
+```
+We can run the .dss case using Log(v) 3LPF or OpenDSS
+```python
+case.run_case("logv3lpf")
+case.run_case("openDSS")
+```
+
+The results are stored as a dictionary, and a the Log(v) 3LPF or OpenDSS solution can be accessed
+```python
+>>> case.results.keys()
+dict_keys(['logv3lpf', 'openDSS'])
+```
+The solution includes the magnitude and angle of the voltage phasors
+```python
+>>> case.results["logv3lpf"].keys()
+dict_keys(['vm', 'va'])
+```
+For example,
+```python
+>>> print(case.results["logv3lpf"]["vm"]["250"])
+[0.96062615 1.00966848 0.96748826]
+```
+Also, the package includes a plotting tool
+```python
+from logv3lpf.plotting import plot_results
+base_algorithm = "openDSS"
+test_algorithm = "logv3lpf"
+variable = "vm"
+plot_results(case,base_algorithm,test_algorithm,variable)
+```
 
 
 ## Citing Log(V) 3LPF
