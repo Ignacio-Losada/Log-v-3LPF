@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: logv3lpf
+Version: 0.1.0
+Summary: Log(v) 3LPF: A linear power flow solver for three-phase unbalanced distribution systems
+Home-page: https://github.com/Ignacio-Losada/Log-v-3LPF
+Author: Ignacio Losada Carreno
+Author-email: il244@cornell.edu
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN

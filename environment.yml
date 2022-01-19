@@ -8,6 +8,6 @@ dependencies:
         - numpy
         - matplotlib
         - seaborn
-        - opendssdirect-py
+        - opendssdirect.py
         - networkx
         - scipy
