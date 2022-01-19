@@ -17,6 +17,6 @@ setup(
     install_requires=_read_requirements_file(),
     url='https://github.com/Ignacio-Losada/Log-v-3LPF',
     author='Ignacio Losada Carreno',
-    author_email='ilosadac@asu.edu',
+    author_email='il244@cornell.edu',
     scripts=['logv3lpf/__init__.py',]
 )
