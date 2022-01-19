@@ -13,7 +13,7 @@ Use Git to install Log(v) 3LPF in your current python environment
 git clone https://github.com/Ignacio-Losada/Log-v-3LPF
 cd .\Log-v-3LPF\
 pip3 install -r requirements.txt
-
+python3 setup.py develop
 ```
 
 ## Installation with Git (Conda)
@@ -22,7 +22,7 @@ Use Git to install a conda environment for Log(v) 3LPF
 git clone https://github.com/Ignacio-Losada/Log-v-3LPF
 cd .\Log-v-3LPF\
 conda env create -f environment.yml
-
+python3 setup.py develop
 ```
 
 ## Basic Usage
