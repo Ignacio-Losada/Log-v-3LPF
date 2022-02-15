@@ -450,40 +450,40 @@ def rank_k_correction_solve(case,process_solution):
     if process_solution:
         process_logv3lpf_solution(case)
 
-# def update_logv3lpf(case,process_solution):
+def update_logv3lpf(case,process_solution):
 
-#     get_regulator_matrices(case)
-#     calculate_base_matrices(case)
-#     get_loads(case)
+    get_regulator_matrices(case)
+    calculate_base_matrices(case)
+    get_loads(case)
 
-#     mask = case.mask
+    mask = case.mask
 
-#     Lu = case.Lu
-#     Lθ = case.Lθ
+    Lu = case.Lu
+    Lθ = case.Lθ
 
-#     ## Get s vector
-#     sload = case.EloadS@case.s
-#     sbus = np.vstack([sload.real,sload.imag])[mask] - case.sdrop - case.sshunt
+    ## Get s vector
+    sload = case.EloadS@case.s
+    sbus = np.vstack([sload.real,sload.imag])[mask] - case.sdrop - case.sshunt
 
-#     if type(Lu) == list:
-#         Ybusinv = case.Ainv
-#     else:
-#         L = scipy.sparse.bmat([[Lu.real,Lθ.real],[Lu.imag,Lθ.imag]])
+    if type(Lu) == list:
+        Ybusinv = case.Ainv
+    else:
+        L = scipy.sparse.bmat([[Lu.real,Lθ.real],[Lu.imag,Lθ.imag]])
 
-#         ## Applying Woodbury to (A + UBV)^-1 when B is singular 
-#         ## See https://ecommons.cornell.edu/bitstream/handle/1813/32749/BU-647-M.pdf;jsessionid=8284B7F90591F0956C8438C1EFF7C732?sequence=1
-#         ## A^-1 - A^-1U(I + BVA^-1U)^1BVA^-1
-#         Ybusinv = case.Ainv-case.AinvU@inv(case.I+L@case.VAinvU)@L@case.VAinv
+        ## Applying Woodbury to (A + UBV)^-1 when B is singular 
+        ## See https://ecommons.cornell.edu/bitstream/handle/1813/32749/BU-647-M.pdf;jsessionid=8284B7F90591F0956C8438C1EFF7C732?sequence=1
+        ## A^-1 - A^-1U(I + BVA^-1U)^1BVA^-1
+        Ybusinv = case.Ainv-case.AinvU@inv(case.I+L@case.VAinvU)@L@case.VAinv
 
-#     sol = Ybusinv@sbus
-#     vm = np.exp(sol[:int(len(sol)/2)])
-#     va = sol[int(len(sol)/2):]
+    sol = Ybusinv@sbus
+    vm = np.exp(sol[:int(len(sol)/2)])
+    va = sol[int(len(sol)/2):]
 
-#     case.vm = vm
-#     case.va = va
+    case.vm = vm
+    case.va = va
 
-#     if process_solution:
-#         process_logv3lpf_solution(case)
+    if process_solution:
+        process_logv3lpf_solution(case)
 
 def check_logv3lpf_performance(case):
     k = 0
