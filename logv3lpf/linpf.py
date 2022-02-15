@@ -178,7 +178,7 @@ def get_regulator_matrices(case):
     # Yr = csr_matrix(block_diag(*Yr))
     if len(yr) != 0:
         yr = np.hstack(yr).reshape(-1,1)
-        case.transformers["Yprim"] = [Yprims[Yprim_idx.index(j)] for j in range(0,len(Yprim_idx))] 
+        # case.transformers["Yprim"] = [Yprims[Yprim_idx.index(j)] for j in range(0,len(Yprim_idx))] 
     else:
         yr = np.array([])
 
