@@ -40,6 +40,10 @@ class case(object):
     
     def run_logv3lpf(self):
         linpf.rank_k_correction_solve(self,True)
+    def update_opendss(self):
+        dss.Solution.Solve()
+        DSScase.process_openDSS_solution(self)
+
     def update_logv3lpf(self):
         linpf.update_logv3lpf(self,True)
 
