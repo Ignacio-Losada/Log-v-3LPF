@@ -13,6 +13,8 @@ class case(object):
         linpf.get_line_matrices(self)
         print("Calculating Transformer Matrices")
         linpf.get_transformer_matrices(self)
+        print("Calculating Regulator Matrices")
+        linpf.get_regulator_matrices(self)
         print("Calculating Base Matrices")
         linpf.calculate_base_matrices(self)
         case.sourcebus = sourcebus
@@ -39,6 +41,7 @@ class case(object):
     def run_logv3lpf(self):
         linpf.rank_k_correction_solve(self,True)
         return False
+
     def run_newton_raphson(self):
         return False
     def run_gauss_seidel(self):
@@ -72,42 +75,6 @@ class case(object):
         except ValueError:
             print("Transformer {:} does not exist or {:} is not a valid bus!".format(name.bus))
 
-    # def get_line_current(self,name,pu):
-    #     idx = self.lines[self.lines.name == name].index[0]
-    #     fbus,tbus = self.lines.fbus[idx],self.lines.tbus[idx]
-    #     fphase,tphase = self.lines.fphase[idx],self.lines.tphase[idx]
-    #     fidx = [self.bus_phases[fbus].index(i) for i in fphase]
-    #     tidx = [self.bus_phases[tbus].index(i) for i in tphase]
-    #     Vn = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][fbus][i],self.results["logv3lpf"]["va"][fbus][i]) for i in fidx])
-    #     Vm = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][tbus][i],self.results["logv3lpf"]["va"][tbus][i]) for i in tidx])
-    #     Yprim = self.lines.Yprim[idx]
-    #     V = np.hstack([Vn,Vm]).reshape(-1,1)
-    #     I = Yprim@V
-    #     if pu:
-    #         return I
-    #     else:
-    #         scaling = np.diag([self.base[fbus]["IBase"]]*len(fidx)+[self.base[tbus]["IBase"]]*len(tidx))
-    #         return scaling@I
-
-    # def get_transformer_current(self,name,pu):
-    #     idx = self.transformers[self.transformers.name == name].index[0]
-    #     if self.transformers.windings[idx] ==3:
-    #         return print("Calculation not implemented")
-    #     else:
-    #         fbus,tbus = self.transformers.buses[idx][0],self.transformers.buses[idx][1]
-    #         fphase,tphase = self.transformers.phases[idx][0],self.transformers.phases[idx][1]
-    #         fidx = [self.bus_phases[fbus].index(i) for i in fphase]
-    #         tidx = [self.bus_phases[tbus].index(i) for i in tphase]
-    #         Vn = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][fbus][i],self.results["logv3lpf"]["va"][fbus][i]) for i in fidx])
-    #         Vm = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][tbus][i],self.results["logv3lpf"]["va"][tbus][i]) for i in tidx])
-    #         Yprim = self.transformers.Yprim[idx]
-    #         V = np.hstack([Vn,Vm]).reshape(-1,1)
-    #         I = Yprim@V
-    #         if pu:
-    #             return I
-    #         else:
-    #             scaling = np.diag([self.base[fbus]["IBase"]]*len(fidx)+[self.base[tbus]["IBase"]]*len(tidx))
-    #             return scaling@I
     def get_line_current(self,name,pu):
         idx = self.lines[self.lines.name == name].index[0]
         fbus,tbus = self.lines.fbus[idx],self.lines.tbus[idx]
@@ -130,25 +97,7 @@ class case(object):
             scaling = np.diag([self.base[fbus]["IBase"]]*len(fidx)+[self.base[tbus]["IBase"]]*len(tidx))
             return scaling@I
 
-    # def get_transformer_current(self,name,pu):
-    #     idx = self.transformers[self.transformers.name == name].index[0]
-    #     if self.transformers.windings[idx] ==3:
-    #         return print("Calculation not implemented")
-    #     else:
-    #         fbus,tbus = self.transformers.buses[idx][0],self.transformers.buses[idx][1]
-    #         fphase,tphase = self.transformers.phases[idx][0],self.transformers.phases[idx][1]
-    #         fidx = [self.bus_phases[fbus].index(i) for i in fphase]
-    #         tidx = [self.bus_phases[tbus].index(i) for i in tphase]
-    #         Vn = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][fbus][i],self.results["logv3lpf"]["va"][fbus][i]) for i in fidx])
-    #         Vm = np.array([polar_to_cartesian(self.results["logv3lpf"]["vm"][tbus][i],self.results["logv3lpf"]["va"][tbus][i]) for i in tidx])
-    #         Yprim = self.transformers.Yprim[idx]
-    #         V = np.hstack([Vn,Vm]).reshape(-1,1)
-    #         I = Yprim@V
-    #         if pu:
-    #             return I
-    #         else:
-    #             scaling = np.diag([self.base[fbus]["IBase"]]*len(fidx)+[self.base[tbus]["IBase"]]*len(tidx))
-    #             return scaling@I
+
         
 
 

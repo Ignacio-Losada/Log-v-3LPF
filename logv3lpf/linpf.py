@@ -87,7 +87,6 @@ def get_transformer_matrices(case):
 
     # Define incidence matrix
     Et = csr_matrix((Nn,Nbrt))
-    Er = csr_matrix((Nn,Nbrr))
 
     Yprims = []
     Yprim_idx = []
@@ -113,7 +112,7 @@ def get_transformer_matrices(case):
         Δ3phase_block = block_diag(*Δ3s)
 
         # Yprim,Tau = get_alt_transformer_yprim(case,i)
-        Yprim = get_transformer_yprim(case,i,pu=True) ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
+        Tau,Yprim = get_transformer_yprim(case,i,pu=True) ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
         Yprims.append(Yprim)
 
         Ytilde = Δ3phase_block@Yprim.conj()@Δ3phase_block.conj()
@@ -129,7 +128,20 @@ def get_transformer_matrices(case):
     else:
         yt = np.array([])
 
+    case.Yut = Yut
+    case.Yθt = Yθt
+    case.yt = yt
+    case.Et = Et
 
+
+def get_regulator_matrices(case):
+
+    Nbrt,Nbrr,Nn = case.Nbrt,case.Nbrr,case.Nn
+
+    Er = csr_matrix((Nn,Nbrr))  
+
+    Yprims = []
+    Yprim_idx = []
     Yur,Yθr,yr = [],[],[]
     counter = 0
         
@@ -154,9 +166,9 @@ def get_transformer_matrices(case):
         # Yprim,Tau = get_alt_transformer_yprim(case,i)
         # Tau = np.diag(1/np.array(case.transformers.taps[i]))
         # Yprim = Tau@get_transformer_yprim(case,i,pu=True)@Tau ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
-        Yprim = get_transformer_yprim(case,i,pu=True) ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
+        Tau,Yprim = get_transformer_yprim(case,i,pu=True) ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
         Yprims.append(Yprim)
-        Ytilde = Δ3phase_block@Yprim.conj()@Δ3phase_block
+        Ytilde = Δ3phase_block@Tau@Yprim.conj()@Tau@Δ3phase_block
         ytilde = Ytilde.sum(axis=0)
 
         Yur.append(Ytilde + np.diag(ytilde))
@@ -169,11 +181,6 @@ def get_transformer_matrices(case):
         case.transformers["Yprim"] = [Yprims[Yprim_idx.index(j)] for j in range(0,len(Yprim_idx))] 
     else:
         yr = np.array([])
-
-    case.Yut = Yut
-    case.Yθt = Yθt
-    case.yt = yt
-    case.Et = Et
 
     case.Yur = Yur
     case.Yθr = Yθr

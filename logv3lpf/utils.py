@@ -107,8 +107,8 @@ def get_transformer_yprim(case,i,pu):
     # if np.linalg.matrix_rank(Yprim)<Yprim.shape[0]:
     #     Yprim += np.random.rand(Yprim.shape[0],Yprim.shape[0])/1000000
 
-    # return Tau@Yprim@Tau
-    return Yprim
+    return Tau,Yprim
+    # return Yprim
 
 def create_df(case):
     results = pd.DataFrame()
