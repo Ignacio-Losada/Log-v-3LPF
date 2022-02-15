@@ -168,7 +168,7 @@ def get_regulator_matrices(case):
         # Yprim = Tau@get_transformer_yprim(case,i,pu=True)@Tau ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
         Tau,Yprim = get_transformer_yprim(case,i,pu=True) ##BEWARE THIS YPRIM DOES NOT INCLUDE LOSSES
         Yprims.append(Yprim)
-        Ytilde = Δ3phase_block@Tau@Yprim.conj()@Tau@Δ3phase_block
+        Ytilde = Δ3phase_block@Yprim.conj()@Δ3phase_block
         ytilde = Ytilde.sum(axis=0)
 
         Yur.append(Ytilde + np.diag(ytilde))
