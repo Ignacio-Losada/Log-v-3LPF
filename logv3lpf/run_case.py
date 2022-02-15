@@ -40,7 +40,8 @@ class case(object):
     
     def run_logv3lpf(self):
         linpf.rank_k_correction_solve(self,True)
-        return False
+    def update_logv3lpf(self):
+        linpf.update_logv3lpf(self,True):
 
     def run_newton_raphson(self):
         return False
